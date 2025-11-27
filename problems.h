@@ -12,10 +12,10 @@ using namespace std;
 // Author: Saidali Otaboyev
 // Student ID: 230257
 
-int safeAccess(const vector<int>& numbers, int idx) {
+int safeAccess(const vector<int>& numbers, int index) {
     const string student = "Saidali Otaboyev"; 
     try {
-        return numbers.at(idx);
+        return numbers.at(index);
     } catch (out_of_range&) {
         cout << student << " says: Index out of range!" << endl;
         return -1;
@@ -24,29 +24,30 @@ int safeAccess(const vector<int>& numbers, int idx) {
 
 template <typename T, typename U>
 class PairHolder {
+private:
+    T first;
+    U second;
+
 public:
     PairHolder(T a, U b) : first(a), second(b) {}
 
-    T getFirst() const { return first; }
-    U getSecond() const { return second; }
+    T get_first() const { return first; }
+    U get_second() const { return second; }
 
-    bool isEqual(const PairHolder<T,U>& other) const {
+    bool isSame(const PairHolder<T,U>& other) const {
         return first == other.first && second == other.second;
     }
 
     void printOwner() const {
         cout << "Owned by Saidali Otaboyev" << endl;
     }
-
-private:
-    T first;
-    U second;
 };
 
+// Task 3: Valid parentheses using stack with switch
 bool isValid(string expr) {
     stack<char> st;
     for (auto ch : expr) {
-        switch (ch) {
+        switch(ch) {
             case '(': case '{': case '[':
                 st.push(ch); break;
             case ')':
